@@ -33,7 +33,7 @@ static inline void ReadInputFromUser(char *inputBuffer) {
     char* result = NULL;
   
     while (result == NULL) {
-        result = fgets(inputBuffer, CHAR_BUFFER, stdin);
+        result = fgets(inputBuffer, BUFFER_SIZE, stdin);
   
         if (inputBuffer[strlen(inputBuffer) - 1] != '\n') {
             ErrorInputStringTooLong();
@@ -55,17 +55,17 @@ static inline void ReadInputFromUser(char *inputBuffer) {
 }
 
 void itemRead(struct item *item) {
-    char *inputBuffer = (char *)malloc(CHAR_BUFFER);
-    memset(inputBuffer, NUL, CHAR_BUFFER);
+    char *inputBuffer = (char *)malloc(BUFFER_SIZE);
+    memset(inputBuffer, NUL, BUFFER_SIZE);
     printf("Please enter the item's name: ");
     ReadInputFromUser(inputBuffer);
     strncpy(item->itemName, inputBuffer, sizeof(item->itemName) - 1);
     printf("Please enter the item's quantity: ");
-    memset(inputBuffer, NUL, CHAR_BUFFER);
+    memset(inputBuffer, NUL, BUFFER_SIZE);
     ReadInputFromUser(inputBuffer);
     item->quantity = atoi(inputBuffer);
     printf("Please enter the item's price: ");
-    memset(inputBuffer, NUL, CHAR_BUFFER);
+    memset(inputBuffer, NUL, BUFFER_SIZE);
     ReadInputFromUser(inputBuffer);
     item->price = atof(inputBuffer);
     item->amount = item->quantity * item->price;
@@ -78,5 +78,4 @@ void itemPrint(struct item *item) {
     printf("Price: %.2f\n", item->price);
     printf("Quantity: %d\n", item->quantity);
     printf("Total Amount: %.2f\n\n", item->amount);
-
 }

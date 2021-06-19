@@ -1,7 +1,7 @@
 #ifndef MY_STRUCT_H
 #define MY_STRUCT_H
 
-#define CHAR_BUFFER (50 * sizeof(char))
+#define BUFFER_SIZE (50 * sizeof(char))
 #define NUL 0
 
 struct item {

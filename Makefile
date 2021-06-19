@@ -10,10 +10,13 @@ CFLAGS = -g -Wall -Werror -Wextra
 
 all: $(BINARY)
 
-$(BINARY): $(OBJS) $(BIN)
+$(BINARY): $(BIN) $(OBJ) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(BIN)/$@
 
 $(BIN):
+	mkdir -p $@
+
+$(OBJ):
 	mkdir -p $@
 
 $(OBJ)/%.o: $(SRC)/%.c
@@ -21,5 +24,5 @@ $(OBJ)/%.o: $(SRC)/%.c
 
 
 clean:
-	rm $(OBJ)/*
-	rm -r $(BIN)
+	rm -rf $(OBJ)
+	rm -rf $(BIN)

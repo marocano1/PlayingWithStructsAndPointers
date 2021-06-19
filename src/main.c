@@ -5,7 +5,7 @@
 
 int main() {
     struct item *myitem = (struct item *)malloc(sizeof(struct item));
-    myitem->itemName = (char *)malloc(CHAR_BUFFER);
+    myitem->itemName = (char *)malloc(BUFFER_SIZE);
 
     itemRead(myitem);
     itemPrint(myitem);
